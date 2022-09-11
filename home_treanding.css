@@ -238,6 +238,27 @@ body {
     margin-top: 20px;
 }
 
+.s0407_wishlist_icon_wrapper {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(30, 39, 46, 8%);
+    cursor: pointer;
+}
+
+.s0407_cart_icon_wrapper {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(30, 39, 46, 8%);
+    cursor: pointer;
+}
+
+
 @media screen and (min-width:768px) {
     .s0407_trending_items_section {
         padding: 25px 15px 30px 15px;

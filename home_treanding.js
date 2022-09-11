@@ -70,11 +70,65 @@
             s0407_cart_icon_wrapper.appendChild(s0407_cart_icon);
 
             // product level area
-            const s0407_product_label = elementMaker("div" , ["s0407_product_label"]);
+            const s0407_product_label = elementMaker("div", ["s0407_product_label"]);
             s0407_product_inner_content_wrapper.appendChild(s0407_product_label);
-            const s0407_product_name_wrapper = elementMaker("div" , ["s0407_product_name_wrapper"]);
+            const s0407_product_name_wrapper = elementMaker("div", ["s0407_product_name_wrapper"]);
             s0407_product_label.appendChild(s0407_product_name_wrapper);
-            const s0407_product_name = elementMaker
+            const s0407_product_name = elementMaker("p", ["s0407_product_name"]);
+            s0407_product_name.textContent = `${singleProduct?.name}`;
+            s0407_product_name_wrapper.appendChild(s0407_product_name);
+
+            const s0407_product_price_wrapper = elementMaker("div", ["s0407_product_price_wrapper"]);
+            s0407_product_label.appendChild(s0407_product_price_wrapper);
+            const s0407_product_price_txt = elementMaker("p", ["s0407_product_price_txt"]);
+            s0407_product_price_txt.innerHTML = `${CURRENCY} ${singleProduct?.price}`;
+            s0407_product_price_wrapper.appendChild(s0407_product_price_txt);
+
+            // product review
+            const s0407_product_rating_area = elementMaker("div", ["s0407_product_rating_area"]);
+            s0407_product_label.appendChild(s0407_product_rating_area);
+            const s0407_product_rating_inner_item = elementMaker("div", ["s0407_product_rating_inner_item"]);
+            s0407_product_rating_area.appendChild(s0407_product_rating_inner_item);
+            // s0407_product_rating_inner_item.appendChild()
+            const ratingNumber = singleProduct?.reviewRating?.rating;
+
+            function showReviewStar(ratingNumber, s0407_product_rating_inner_item) {
+                let stars = ratingNumber;
+                let starsFloor = Math.floor(stars);
+                for (let i = 0; i < starsFloor; i++) {
+                    let fc001_review_star = elementMaker("li", ["s0407_rating_star"]);
+                    fc001_review_star.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11"> <path id="Star" d="M59.5,72.843,62.9,75,62,70.93l3-2.736-3.955-.357L59.5,64l-1.545,3.837L54,68.194l3,2.736L56.1,75Z" transform="translate(-54 -64)" fill="#fed300"></path> </svg>
+                     `
+
+                    s0407_product_rating_inner_item.appendChild(fc001_review_star);
+
+                };
+                let starDecimal = stars - starsFloor;
+                if (starDecimal > 0) {
+                    let fc001_review_star = elementMaker("li", ["s0407_rating_star"]);
+                    fc001_review_star.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11" height="11" viewBox="0 0 11 11"> <defs> <linearGradient id="linear-gradient" y1="0.384" x2="1" y2="0.381" gradientUnits="objectBoundingBox"> <stop offset="0" stop-color="#fed300"></stop> <stop offset="0.5" stop-color="#fbd414"></stop> <stop offset="0.503" stop-color="#dedbcc"></stop> <stop offset="1" stop-color="#dcdcdc"></stop> </linearGradient> </defs> <path id="Star" d="M59.5,72.843,62.9,75,62,70.93l3-2.736-3.955-.357L59.5,64l-1.545,3.837L54,68.194l3,2.736L56.1,75Z" transform="translate(-54 -64)" fill="url(#linear-gradient)"></path> </svg>
+                                `;
+                    s0407_product_rating_inner_item.appendChild(fc001_review_star);
+                };
+                if ((5 - stars) > 0) {
+                    for (let i = 0; i < Math.floor((5 - stars)); i++) {
+                        let fc001_review_star = elementMaker("li", ["s0407_rating_star"]);
+                        fc001_review_star.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11"> <path id="Star" d="M59.5,72.843,62.9,75,62,70.93l3-2.736-3.955-.357L59.5,64l-1.545,3.837L54,68.194l3,2.736L56.1,75Z" transform="translate(-54 -64)" fill="#dfdfdf"></path> </svg>
+                                `;
+                        s0407_product_rating_inner_item.appendChild(fc001_review_star);
+                    };
+                };
+
+
+            }
+            showReviewStar(ratingNumber, s0407_product_rating_inner_item);
+
+            // cart and wish list interaction
+           
+
 
 
 
